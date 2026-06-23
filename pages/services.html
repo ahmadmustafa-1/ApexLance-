@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="../images/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explore Freelance Services | ApexLance</title>
+    <!-- Google Fonts: Plus Jakarta Sans (Headings) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <!-- Custom 3D Cursor -->
+    <div class="custom-cursor-dot" id="cursor-dot"></div>
+    <div class="custom-cursor-ring" id="cursor-ring"></div>
+
+    <!-- Background 3D Drifting Orbs -->
+    <div class="orb-backdrop">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="grid-overlay"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar" id="navbar">
+      <div class="container navbar-container">
+        <a href="../index.html" class="logo-link">
+          <div class="logo">
+            <svg class="logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 4L4 26H28L16 4ZM16 12L8 26H24L16 12Z" fill="url(#logo-grad)" fill-rule="evenodd" />
+              <circle cx="16" cy="18.5" r="2.5" fill="url(#logo-grad)" />
+              <defs>
+                <linearGradient id="logo-grad" x1="4" y1="4" x2="28" y2="26" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#6366f1" />
+                  <stop offset="1" stop-color="#a855f7" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <span class="logo-text">Apex<span>Lance</span></span>
+          </div>
+        </a>
+
+        <nav class="nav-menu" id="nav-menu">
+          <a href="./services.html" class="nav-link active">Explore Categories</a>
+          <a href="./services.html" class="nav-link">Find Work</a>
+          <a href="./contact.html" class="nav-link">Post a Job</a>
+          <a href="./about.html" class="nav-link">Enterprise</a>
+          <a href="./about.html" class="nav-link">About</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Light/Dark Theme">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <a href="./login.html" class="btn-ghost">Log In</a>
+          <a href="./contact.html" class="btn-primary">Join as Freelancer</a>
+          <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-drawer" id="mobile-drawer">
+      <nav class="drawer-menu">
+        <a href="./services.html" class="drawer-link">Explore Categories</a>
+        <a href="./services.html" class="drawer-link">Find Work</a>
+        <a href="./contact.html" class="drawer-link">Post a Job</a>
+        <a href="./about.html" class="drawer-link">Enterprise</a>
+        <a href="./about.html" class="drawer-link">About</a>
+        <div class="drawer-theme-toggle-row">
+          <span>Soft Theme Adjust</span>
+          <button class="theme-toggle-btn" id="theme-toggle-mobile" aria-label="Toggle Light/Dark Theme">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="drawer-actions">
+          <a href="./login.html" class="btn-ghost w-full text-center">Log In</a>
+          <a href="./contact.html" class="btn-primary w-full text-center">Join as Freelancer</a>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Services Hub Main Content -->
+    <main class="services-hub-page">
+      <section class="services-hero">
+        <div class="container">
+          <div class="reveal-on-scroll fade-up text-center">
+            <span class="section-subtitle">Marketplace Catalog</span>
+            <h1 class="hero-title">Discover High-End <span class="gradient-text">Freelance</span> Services</h1>
+            <p class="section-desc" style="margin-left: auto; margin-right: auto; max-width: 580px;">
+              Filter through verified technical experts, creative geniuses, and tactical strategists. Hire by scope, reviews, or portfolio items.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Filter & Search Controls Section -->
+      <section class="services-controls-section reveal-on-scroll fade-up">
+        <div class="container">
+          <div class="controls-wrapper">
+            <!-- Search Field -->
+            <div class="catalog-search-box">
+              <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="text" id="catalog-search-input" placeholder="Search services (e.g. AI, React, Brand, UI/UX...)" autocomplete="off">
+            </div>
+
+            <!-- Categories Tabs -->
+            <div class="category-tabs-container">
+              <button class="category-tab active" data-category="all">All Services</button>
+              <button class="category-tab" data-category="web-development">Web Development</button>
+              <button class="category-tab" data-category="graphic-design">Graphic Design</button>
+              <button class="category-tab" data-category="writing">Writing</button>
+              <button class="category-tab" data-category="marketing">Marketing</button>
+              <button class="category-tab" data-category="video-editing">Video Editing</button>
+              <button class="category-tab" data-category="programming">Programming</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Grid Listings -->
+      <section class="services-grid-section">
+        <div class="container">
+          <div class="catalog-grid" id="catalog-grid">
+            
+            <!-- Service 1 -->
+            <div class="catalog-card-item" data-category="programming" data-tags="ai, agents, python, programming">
+              <div class="card-glow"></div>
+              <div class="card-border-light"></div>
+              <div class="catalog-card-inner">
+                <div class="card-banner-graphic banner-ai">
+                  <span>AI / LLM</span>
+                </div>
+                <div class="card-author">
+                  <div class="author-avatar avatar-purple">
+                    <img src="../images/avatar_m1.png" alt="Ali Raza" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                  </div>
+                  <div class="author-info">
+                    <h4 class="author-name">Ali Raza</h4>
+                    <span class="author-level">Level 2 Seller</span>
+                  </div>
+                </div>
+                <h3 class="card-service-title"><a href="./service-details.html">Deploy Autonomous AI Agents with LangChain & Python</a></h3>
+                <p class="card-service-desc">I will develop custom AI agents using GPT-4, Claude, LangChain, and RAG pipelines for database retrieval and workflow automation.</p>
+                <div class="card-meta">
+                  <div class="card-rating">
+                    <span class="star-icon">★</span>
+                    <span class="rating-val">4.9</span>
+                    <span class="rating-count">(34)</span>
+                  </div>
+                  <div class="card-pricing">
+                    <span class="price-label">Starting At</span>
+                    <span class="price-val">PKR 12,000</span>
+                  </div>
+                </div>
+                <div class="card-action-links">
+                  <a href="./profile.html" class="btn-card-profile">View Profile</a>
+                  <a href="./service-details.html" class="btn-card-details">View Details</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="catalog-card-item" data-category="web-development" data-tags="web, development, react, nextjs, fullstack">
+              <div class="card-glow"></div>
+              <div class="card-border-light"></div>
+              <div class="catalog-card-inner">
+                <div class="card-banner-graphic banner-web">
+                  <span>Next.js Fullstack</span>
+                </div>
+                <div class="card-author">
+                  <div class="author-avatar avatar-blue">
+                    <img src="../images/sana_malik.png" alt="Sana Malik" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                  </div>
+                  <div class="author-info">
+                    <h4 class="author-name">Sana Malik</h4>
+                    <span class="author-level">Top Rated Seller</span>
+                  </div>
+                </div>
+                <h3 class="card-service-title"><a href="./service-details.html">Build High-Performance Next.js & React Applications</a></h3>
+                <p class="card-service-desc">Pixel-perfect responsive frontend code, TailwindCSS, Server Components, API integrations, and Vercel cloud deployments.</p>
+                <div class="card-meta">
+                  <div class="card-rating">
+                    <span class="star-icon">★</span>
+                    <span class="rating-val">5.0</span>
+                    <span class="rating-count">(92)</span>
+                  </div>
+                  <div class="card-pricing">
+                    <span class="price-label">Starting At</span>
+                    <span class="price-val">PKR 15,000</span>
+                  </div>
+                </div>
+                <div class="card-action-links">
+                  <a href="./profile.html" class="btn-card-profile">View Profile</a>
+                  <a href="./service-details.html" class="btn-card-details">View Details</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="catalog-card-item" data-category="graphic-design" data-tags="brand, logo, figma, design, graphic">
+              <div class="card-glow"></div>
+              <div class="card-border-light"></div>
+              <div class="catalog-card-inner">
+                <div class="card-banner-graphic banner-design">
+                  <span>Brand Identity</span>
+                </div>
+                <div class="card-author">
+                  <div class="author-avatar avatar-pink">
+                    <img src="../images/avatar_m2.png" alt="Muhammad Kamran" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                  </div>
+                  <div class="author-info">
+                    <h4 class="author-name">Muhammad Kamran</h4>
+                    <span class="author-level">Pro Verified</span>
+                  </div>
+                </div>
+                <h3 class="card-service-title"><a href="./service-details.html">Create Premium Brand Guidelines & Vector Logo Systems</a></h3>
+                <p class="card-service-desc">I will design a unique corporate visual identity system, including style guides, typography systems, vector logos, and custom UI components.</p>
+                <div class="card-meta">
+                  <div class="card-rating">
+                    <span class="star-icon">★</span>
+                    <span class="rating-val">4.8</span>
+                    <span class="rating-count">(118)</span>
+                  </div>
+                  <div class="card-pricing">
+                    <span class="price-label">Starting At</span>
+                    <span class="price-val">PKR 22,000</span>
+                  </div>
+                </div>
+                <div class="card-action-links">
+                  <a href="./profile.html" class="btn-card-profile">View Profile</a>
+                  <a href="./service-details.html" class="btn-card-details">View Details</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="catalog-card-item" data-category="video-editing" data-tags="video, editing, vfx, motion, animations">
+              <div class="card-glow"></div>
+              <div class="card-border-light"></div>
+              <div class="catalog-card-inner">
+                <div class="card-banner-graphic banner-video">
+                  <span>Explainer Video</span>
+                </div>
+                <div class="card-author">
+                  <div class="author-avatar avatar-purple">
+                    <img src="../images/avatar_f1.png" alt="Ayesha Imran" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                  </div>
+                  <div class="author-info">
+                    <h4 class="author-name">Ayesha Imran</h4>
+                    <span class="author-level">Level 2 Seller</span>
+                  </div>
+                </div>
+                <h3 class="card-service-title"><a href="./service-details.html">Product Demo Video Editing & 3D Motion Graphics</a></h3>
+                <p class="card-service-desc">Stunning product commercials, dynamic app walkthroughs, motion sound design, 3D visual render overlays, and color grading.</p>
+                <div class="card-meta">
+                  <div class="card-rating">
+                    <span class="star-icon">★</span>
+                    <span class="rating-val">5.0</span>
+                    <span class="rating-count">(47)</span>
+                  </div>
+                  <div class="card-pricing">
+                    <span class="price-label">Starting At</span>
+                    <span class="price-val">PKR 10,000</span>
+                  </div>
+                </div>
+                <div class="card-action-links">
+                  <a href="./profile.html" class="btn-card-profile">View Profile</a>
+                  <a href="./service-details.html" class="btn-card-details">View Details</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="catalog-card-item" data-category="writing" data-tags="content, writing, technical, copywriter">
+              <div class="card-glow"></div>
+              <div class="card-border-light"></div>
+              <div class="catalog-card-inner">
+                <div class="card-banner-graphic banner-writing">
+                  <span>Technical Copy</span>
+                </div>
+                <div class="card-author">
+                  <div class="author-avatar avatar-indigo">
+                    <img src="../images/avatar_m1.png" alt="Dawood Qureshi" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                  </div>
+                  <div class="author-info">
+                    <h4 class="author-name">Dawood Qureshi</h4>
+                    <span class="author-level">Level 1 Seller</span>
+                  </div>
+                </div>
+                <h3 class="card-service-title"><a href="./service-details.html">Write Developer Guides & Crypto Whitepapers</a></h3>
+                <p class="card-service-desc">I write high-quality tech documentation, API guides, blockchain research papers, and technical marketing articles tailored to developers.</p>
+                <div class="card-meta">
+                  <div class="card-rating">
+                    <span class="star-icon">★</span>
+                    <span class="rating-val">4.9</span>
+                    <span class="rating-count">(23)</span>
+                  </div>
+                  <div class="card-pricing">
+                    <span class="price-label">Starting At</span>
+                    <span class="price-val">PKR 6,000</span>
+                  </div>
+                </div>
+                <div class="card-action-links">
+                  <a href="./profile.html" class="btn-card-profile">View Profile</a>
+                  <a href="./service-details.html" class="btn-card-details">View Details</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="catalog-card-item" data-category="marketing" data-tags="growth, seo, marketing, digital">
+              <div class="card-glow"></div>
+              <div class="card-border-light"></div>
+              <div class="catalog-card-inner">
+                <div class="card-banner-graphic banner-marketing">
+                  <span>Growth Hacking</span>
+                </div>
+                <div class="card-author">
+                  <div class="author-avatar avatar-blue">
+                    <img src="../images/avatar_f1.png" alt="Amina Yasmin" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                  </div>
+                  <div class="author-info">
+                    <h4 class="author-name">Amina Yasmin</h4>
+                    <span class="author-level">Top Rated Seller</span>
+                  </div>
+                </div>
+                <h3 class="card-service-title"><a href="./service-details.html">SEO Audit & Multi-Channel Customer Acquisition Loops</a></h3>
+                <p class="card-service-desc">Boost your search engine visibility and structure customer growth flywheels. Includes SEO keywords maps and programmatic ad campaigns.</p>
+                <div class="card-meta">
+                  <div class="card-rating">
+                    <span class="star-icon">★</span>
+                    <span class="rating-val">4.8</span>
+                    <span class="rating-count">(81)</span>
+                  </div>
+                  <div class="card-pricing">
+                    <span class="price-label">Starting At</span>
+                    <span class="price-val">PKR 14,000</span>
+                  </div>
+                </div>
+                <div class="card-action-links">
+                  <a href="./profile.html" class="btn-card-profile">View Profile</a>
+                  <a href="./service-details.html" class="btn-card-details">View Details</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Service 7 -->
+            <div class="catalog-card-item" data-category="programming" data-tags="smart, contracts, solidity, web3, programming">
+              <div class="card-glow"></div>
+              <div class="card-border-light"></div>
+              <div class="catalog-card-inner">
+                <div class="card-banner-graphic banner-web3">
+                  <span>Solidity & Web3</span>
+                </div>
+                <div class="card-author">
+                  <div class="author-avatar avatar-indigo">
+                    <img src="../images/avatar_m1.png" alt="Luqman Chaudhry" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                  </div>
+                  <div class="author-info">
+                    <h4 class="author-name">Luqman Chaudhry</h4>
+                    <span class="author-level">Pro Verified</span>
+                  </div>
+                </div>
+                <h3 class="card-service-title"><a href="./service-details.html">Secure Smart Contract Auditing & Solidity Development</a></h3>
+                <p class="card-service-desc">I will design ERC-20 / ERC-721 smart contracts, run mathematical unit test assertions, audit protocol vulnerabilities, and deploy Web3 APIs.</p>
+                <div class="card-meta">
+                  <div class="card-rating">
+                    <span class="star-icon">★</span>
+                    <span class="rating-val">5.0</span>
+                    <span class="rating-count">(61)</span>
+                  </div>
+                  <div class="card-pricing">
+                    <span class="price-label">Starting At</span>
+                    <span class="price-val">PKR 30,000</span>
+                  </div>
+                </div>
+                <div class="card-action-links">
+                  <a href="./profile.html" class="btn-card-profile">View Profile</a>
+                  <a href="./service-details.html" class="btn-card-details">View Details</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Service 8 -->
+            <div class="catalog-card-item" data-category="graphic-design" data-tags="design, uiux, product, figma, graphic">
+              <div class="card-glow"></div>
+              <div class="card-border-light"></div>
+              <div class="catalog-card-inner">
+                <div class="card-banner-graphic banner-uiux">
+                  <span>UI/UX Figma Design</span>
+                </div>
+                <div class="card-author">
+                  <div class="author-avatar avatar-pink">
+                    <img src="../images/avatar_f2.png" alt="Saima Shah" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                  </div>
+                  <div class="author-info">
+                    <h4 class="author-name">Saima Shah</h4>
+                    <span class="author-level">Level 2 Seller</span>
+                  </div>
+                </div>
+                <h3 class="card-service-title"><a href="./service-details.html">High-Fidelity Dashboard & SaaS Figma Prototypes</a></h3>
+                <p class="card-service-desc">I design modern SaaS interfaces, user experience flows, complex data dashboards, and modular component design systems in Figma.</p>
+                <div class="card-meta">
+                  <div class="card-rating">
+                    <span class="star-icon">★</span>
+                    <span class="rating-val">4.9</span>
+                    <span class="rating-count">(73)</span>
+                  </div>
+                  <div class="card-pricing">
+                    <span class="price-label">Starting At</span>
+                    <span class="price-val">PKR 18,000</span>
+                  </div>
+                </div>
+                <div class="card-action-links">
+                  <a href="./profile.html" class="btn-card-profile">View Profile</a>
+                  <a href="./service-details.html" class="btn-card-details">View Details</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Service 9 -->
+            <div class="catalog-card-item" data-category="programming" data-tags="data, engineer, pipeline, sql, programming">
+              <div class="card-glow"></div>
+              <div class="card-border-light"></div>
+              <div class="catalog-card-inner">
+                <div class="card-banner-graphic banner-data">
+                  <span>Data Pipelines</span>
+                </div>
+                <div class="card-author">
+                  <div class="author-avatar avatar-purple">
+                    <img src="../images/avatar_m2.png" alt="Rehan Tariq" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                  </div>
+                  <div class="author-info">
+                    <h4 class="author-name">Rehan Tariq</h4>
+                    <span class="author-level">Level 1 Seller</span>
+                  </div>
+                </div>
+                <h3 class="card-service-title"><a href="./service-details.html">Build ETL Data Pipelines & Warehouse Architecture</a></h3>
+                <p class="card-service-desc">Integrate Postgres, BigQuery, dbt, and Apache Airflow. Automate scheduled sync pipelines and optimize database SQL query structures.</p>
+                <div class="card-meta">
+                  <div class="card-rating">
+                    <span class="star-icon">★</span>
+                    <span class="rating-val">4.8</span>
+                    <span class="rating-count">(19)</span>
+                  </div>
+                  <div class="card-pricing">
+                    <span class="price-label">Starting At</span>
+                    <span class="price-val">PKR 13,000</span>
+                  </div>
+                </div>
+                <div class="card-action-links">
+                  <a href="./profile.html" class="btn-card-profile">View Profile</a>
+                  <a href="./service-details.html" class="btn-card-details">View Details</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Service 10 -->
+            <div class="catalog-card-item" data-category="marketing" data-tags="ads, google, facebook, campaigns, marketing">
+              <div class="card-glow"></div>
+              <div class="card-border-light"></div>
+              <div class="catalog-card-inner">
+                <div class="card-banner-graphic banner-ads">
+                  <span>Paid Advertising</span>
+                </div>
+                <div class="card-author">
+                  <div class="author-avatar avatar-blue">
+                    <img src="../images/avatar_f2.png" alt="Kiran Fatima" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                  </div>
+                  <div class="author-info">
+                    <h4 class="author-name">Kiran Fatima</h4>
+                    <span class="author-level">Top Rated Seller</span>
+                  </div>
+                </div>
+                <h3 class="card-service-title"><a href="./service-details.html">Setup Google Search Ads & Meta Retargeting Loops</a></h3>
+                <p class="card-service-desc">I manage paid ad campaigns, optimize key demographic conversions, set up analytics trackers, and reduce customer acquisition costs.</p>
+                <div class="card-meta">
+                  <div class="card-rating">
+                    <span class="star-icon">★</span>
+                    <span class="rating-val">4.9</span>
+                    <span class="rating-count">(54)</span>
+                  </div>
+                  <div class="card-pricing">
+                    <span class="price-label">Starting At</span>
+                    <span class="price-val">PKR 11,000</span>
+                  </div>
+                </div>
+                <div class="card-action-links">
+                  <a href="./profile.html" class="btn-card-profile">View Profile</a>
+                  <a href="./service-details.html" class="btn-card-details">View Details</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Service 11 -->
+            <div class="catalog-card-item" data-category="video-editing" data-tags="video, editing, motion, sound, assets">
+              <div class="card-glow"></div>
+              <div class="card-border-light"></div>
+              <div class="catalog-card-inner">
+                <div class="card-banner-graphic banner-motion">
+                  <span>3D Motion Graphics</span>
+                </div>
+                <div class="card-author">
+                  <div class="author-avatar avatar-pink">
+                    <img src="../images/avatar_m2.png" alt="Usman Khalid" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                  </div>
+                  <div class="author-info">
+                    <h4 class="author-name">Usman Khalid</h4>
+                    <span class="author-level">Level 2 Seller</span>
+                  </div>
+                </div>
+                <h3 class="card-service-title"><a href="./service-details.html">Design Premium 3D Motion Logos & Typography Hooks</a></h3>
+                <p class="card-service-desc">Kinetic typography titles, custom 3D intro logo animations, premium overlays, and smooth transitions for professional web streams.</p>
+                <div class="card-meta">
+                  <div class="card-rating">
+                    <span class="star-icon">★</span>
+                    <span class="rating-val">4.7</span>
+                    <span class="rating-count">(38)</span>
+                  </div>
+                  <div class="card-pricing">
+                    <span class="price-label">Starting At</span>
+                    <span class="price-val">PKR 8,000</span>
+                  </div>
+                </div>
+                <div class="card-action-links">
+                  <a href="./profile.html" class="btn-card-profile">View Profile</a>
+                  <a href="./service-details.html" class="btn-card-details">View Details</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Service 12 -->
+            <div class="catalog-card-item" data-category="web-development" data-tags="mobile, app, react, native, ios, android, web">
+              <div class="card-glow"></div>
+              <div class="card-border-light"></div>
+              <div class="catalog-card-inner">
+                <div class="card-banner-graphic banner-mobile">
+                  <span>iOS & Android App</span>
+                </div>
+                <div class="card-author">
+                  <div class="author-avatar avatar-indigo">
+                    <img src="../images/avatar_m2.png" alt="Talha Siddiqui" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                  </div>
+                  <div class="author-info">
+                    <h4 class="author-name">Talha Siddiqui</h4>
+                    <span class="author-level">Pro Verified</span>
+                  </div>
+                </div>
+                <h3 class="card-service-title"><a href="./service-details.html">Develop React Native Mobile Apps for AppStore & PlayStore</a></h3>
+                <p class="card-service-desc">Cross-platform mobile application development, push notification pipelines, map services, secure storage, and state management systems.</p>
+                <div class="card-meta">
+                  <div class="card-rating">
+                    <span class="star-icon">★</span>
+                    <span class="rating-val">5.0</span>
+                    <span class="rating-count">(31)</span>
+                  </div>
+                  <div class="card-pricing">
+                    <span class="price-label">Starting At</span>
+                    <span class="price-val">PKR 25,000</span>
+                  </div>
+                </div>
+                <div class="card-action-links">
+                  <a href="./profile.html" class="btn-card-profile">View Profile</a>
+                  <a href="./service-details.html" class="btn-card-details">View Details</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+      <div class="container footer-container">
+        <!-- Brand Intro -->
+        <div class="footer-brand-col reveal-on-scroll fade-up">
+          <div class="logo">
+            <svg class="logo-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 4L4 26H28L16 4ZM16 12L8 26H24L16 12Z" fill="url(#footer-logo-grad)" fill-rule="evenodd" />
+              <circle cx="16" cy="18.5" r="2.5" fill="url(#footer-logo-grad)" />
+              <defs>
+                <linearGradient id="footer-logo-grad" x1="4" y1="4" x2="28" y2="26" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#6366f1" />
+                  <stop offset="1" stop-color="#a855f7" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <span class="logo-text">Apex<span>Lance</span></span>
+          </div>
+          <p class="footer-desc">Connecting forward-thinking companies with premium, pre-vetted independent freelance professionals worldwide.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Discord">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Links Col 1 -->
+        <div class="footer-links-col reveal-on-scroll fade-up stagger-1">
+          <h4 class="footer-title">For Clients</h4>
+          <ul class="footer-list">
+            <li><a href="#" class="footer-link-item">How to Hire</a></li>
+            <li><a href="#" class="footer-link-item">Talent Quality</a></li>
+            <li><a href="#" class="footer-link-item">Pricing Plans</a></li>
+            <li><a href="#" class="footer-link-item">Project Insurance</a></li>
+          </ul>
+        </div>
+
+        <!-- Links Col 2 -->
+        <div class="footer-links-col reveal-on-scroll fade-up stagger-2">
+          <h4 class="footer-title">For Freelancers</h4>
+          <ul class="footer-list">
+            <li><a href="#" class="footer-link-item">Find Projects</a></li>
+            <li><a href="#" class="footer-link-item">Application Process</a></li>
+            <li><a href="#" class="footer-link-item">Freelancer Hub</a></li>
+            <li><a href="#" class="footer-link-item">Referral Program</a></li>
+          </ul>
+        </div>
+
+        <!-- Links Col 3 (Newsletter) -->
+        <div class="footer-newsletter-col reveal-on-scroll fade-up stagger-3">
+          <h4 class="footer-title">Stay Updated</h4>
+          <p class="newsletter-desc">Subscribe to our newsletter for insights on high-paying tech and design niches.</p>
+          <form class="newsletter-form" id="newsletter-form">
+            <input type="email" placeholder="Enter your email" class="newsletter-input" required autocomplete="off">
+            <button type="submit" class="btn-primary newsletter-btn" aria-label="Subscribe">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Copyright Bar -->
+      <div class="footer-bottom">
+        <div class="container footer-bottom-container">
+          <p class="copyright-text">© 2026 ApexLance. Built for SoftGrid Solutions Task.</p>
+          <div class="footer-bottom-links">
+            <a href="#" class="footer-bottom-link">Privacy Policy</a>
+            <a href="#" class="footer-bottom-link">Terms of Service</a>
+            <a href="#" class="footer-bottom-link">Security Guidelines</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="../js/main.js"></script>
+  </body>
+</html>

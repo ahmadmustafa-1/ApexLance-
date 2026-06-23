@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="../images/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | ApexLance</title>
+    <!-- Google Fonts: Plus Jakarta Sans (Headings) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <!-- Custom 3D Cursor -->
+    <div class="custom-cursor-dot" id="cursor-dot"></div>
+    <div class="custom-cursor-ring" id="cursor-ring"></div>
+
+    <!-- Background 3D Drifting Orbs -->
+    <div class="orb-backdrop">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="grid-overlay"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar" id="navbar">
+      <div class="container navbar-container">
+        <a href="../index.html" class="logo-link">
+          <div class="logo">
+            <svg class="logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 4L4 26H28L16 4ZM16 12L8 26H24L16 12Z" fill="url(#logo-grad)" fill-rule="evenodd" />
+              <circle cx="16" cy="18.5" r="2.5" fill="url(#logo-grad)" />
+              <defs>
+                <linearGradient id="logo-grad" x1="4" y1="4" x2="28" y2="26" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#6366f1" />
+                  <stop offset="1" stop-color="#a855f7" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <span class="logo-text">Apex<span>Lance</span></span>
+          </div>
+        </a>
+
+        <nav class="nav-menu" id="nav-menu">
+          <a href="./services.html" class="nav-link">Explore Categories</a>
+          <a href="./services.html" class="nav-link">Find Work</a>
+          <a href="./contact.html" class="nav-link active">Post a Job</a>
+          <a href="./about.html" class="nav-link">Enterprise</a>
+          <a href="./about.html" class="nav-link">About</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Light/Dark Theme">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <a href="./login.html" class="btn-ghost">Log In</a>
+          <a href="./contact.html" class="btn-primary">Join as Freelancer</a>
+          <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-drawer" id="mobile-drawer">
+      <nav class="drawer-menu">
+        <a href="./services.html" class="drawer-link">Explore Categories</a>
+        <a href="./services.html" class="drawer-link">Find Work</a>
+        <a href="./contact.html" class="drawer-link">Post a Job</a>
+        <a href="./about.html" class="drawer-link">Enterprise</a>
+        <a href="./about.html" class="drawer-link">About</a>
+        <div class="drawer-theme-toggle-row">
+          <span>Soft Theme Adjust</span>
+          <button class="theme-toggle-btn" id="theme-toggle-mobile" aria-label="Toggle Light/Dark Theme">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="drawer-actions">
+          <a href="./login.html" class="btn-ghost w-full text-center">Log In</a>
+          <a href="./contact.html" class="btn-primary w-full text-center">Join as Freelancer</a>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Contact Page Main Content -->
+    <main class="contact-us-page">
+      <section class="contact-hero">
+        <div class="container">
+          <div class="reveal-on-scroll fade-up text-center">
+            <span class="section-subtitle">Get In Touch</span>
+            <h1 class="hero-title">Start a <span class="gradient-text">Conversation</span> Today</h1>
+            <p class="section-desc" style="margin-left: auto; margin-right: auto; max-width: 580px;">
+              Have questions about billing, enterprise options, or candidate screening? Drop us a line.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Layout Content -->
+      <section class="contact-details-section">
+        <div class="container">
+          <div class="contact-layout-grid">
+            
+            <!-- Left Side - Contact Info Panel -->
+            <div class="contact-info-panel reveal-on-scroll fade-left">
+              <div class="card-glow"></div>
+              <div class="card-border-light"></div>
+              <div class="info-panel-inner">
+                <h3 class="about-section-heading">Contact Information</h3>
+                <p class="details-paragraph" style="margin-bottom: 30px;">Reach out directly and our support architects will get back to you in under 12 hours.</p>
+
+                <!-- Coordinates items -->
+                <div class="coordinates-list">
+                  <!-- Email -->
+                  <div class="coord-item">
+                    <div class="coord-icon-wrapper dev-gradient">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </div>
+                    <div class="coord-text-group">
+                      <span class="coord-label">Email Support</span>
+                      <a href="mailto:support@apexlance.com" class="coord-value">support@apexlance.com</a>
+                    </div>
+                  </div>
+
+                  <!-- Phone -->
+                  <div class="coord-item">
+                    <div class="coord-icon-wrapper design-gradient">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    </div>
+                    <div class="coord-text-group">
+                      <span class="coord-label">Call Coordinates</span>
+                      <a href="tel:+92515552673" class="coord-value">+92 (51) 555-AMPE</a>
+                    </div>
+                  </div>
+
+                  <!-- Location -->
+                  <div class="coord-item">
+                    <div class="coord-icon-wrapper ai-gradient">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    </div>
+                    <div class="coord-text-group">
+                      <span class="coord-label">Headquarters</span>
+                      <span class="coord-value">SoftGrid Solutions Building, Suite 404, Sector F-7, Islamabad, Pakistan</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Side - Interactive Validated Contact Form -->
+            <div class="contact-form-panel">
+              <div class="card-glow"></div>
+              <div class="card-border-light"></div>
+              <div class="form-panel-inner">
+                <h3 class="about-section-heading">Send a Message</h3>
+                
+                <form id="apexlance-contact-form" novalidate autocomplete="off">
+                  
+                  <!-- Full Name Field -->
+                  <div class="form-group-field">
+                    <label for="contact-name">Full Name *</label>
+                    <input type="text" id="contact-name" name="name" placeholder="Enter your full name" required>
+                    <span class="field-error-message" id="error-name">Full Name is required.</span>
+                  </div>
+
+                  <!-- Email Address Field -->
+                  <div class="form-group-field">
+                    <label for="contact-email">Email Address *</label>
+                    <input type="email" id="contact-email" name="email" placeholder="Enter your email address" required>
+                    <span class="field-error-message" id="error-email">Please enter a valid email address.</span>
+                  </div>
+
+                  <!-- Subject Field -->
+                  <div class="form-group-field">
+                    <label for="contact-subject">Subject *</label>
+                    <input type="text" id="contact-subject" name="subject" placeholder="What is this regarding?" required>
+                    <span class="field-error-message" id="error-subject">Subject is required.</span>
+                  </div>
+
+                  <!-- Message Field -->
+                  <div class="form-group-field">
+                    <label for="contact-message">Message *</label>
+                    <textarea id="contact-message" name="message" rows="5" placeholder="Write your detailed message here..." required></textarea>
+                    <span class="field-error-message" id="error-message">Message cannot be empty.</span>
+                  </div>
+
+                  <button type="submit" class="btn-primary w-full text-center" style="margin-top: 15px;">Send Message</button>
+                </form>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+      <div class="container footer-container">
+        <!-- Brand Intro -->
+        <div class="footer-brand-col reveal-on-scroll fade-up">
+          <div class="logo">
+            <svg class="logo-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 4L4 26H28L16 4ZM16 12L8 26H24L16 12Z" fill="url(#footer-logo-grad)" fill-rule="evenodd" />
+              <circle cx="16" cy="18.5" r="2.5" fill="url(#footer-logo-grad)" />
+              <defs>
+                <linearGradient id="footer-logo-grad" x1="4" y1="4" x2="28" y2="26" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#6366f1" />
+                  <stop offset="1" stop-color="#a855f7" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <span class="logo-text">Apex<span>Lance</span></span>
+          </div>
+          <p class="footer-desc">Connecting forward-thinking companies with premium, pre-vetted independent freelance professionals worldwide.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Discord">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Links Col 1 -->
+        <div class="footer-links-col reveal-on-scroll fade-up stagger-1">
+          <h4 class="footer-title">For Clients</h4>
+          <ul class="footer-list">
+            <li><a href="#" class="footer-link-item">How to Hire</a></li>
+            <li><a href="#" class="footer-link-item">Talent Quality</a></li>
+            <li><a href="#" class="footer-link-item">Pricing Plans</a></li>
+            <li><a href="#" class="footer-link-item">Project Insurance</a></li>
+          </ul>
+        </div>
+
+        <!-- Links Col 2 -->
+        <div class="footer-links-col reveal-on-scroll fade-up stagger-2">
+          <h4 class="footer-title">For Freelancers</h4>
+          <ul class="footer-list">
+            <li><a href="#" class="footer-link-item">Find Projects</a></li>
+            <li><a href="#" class="footer-link-item">Application Process</a></li>
+            <li><a href="#" class="footer-link-item">Freelancer Hub</a></li>
+            <li><a href="#" class="footer-link-item">Referral Program</a></li>
+          </ul>
+        </div>
+
+        <!-- Links Col 3 (Newsletter) -->
+        <div class="footer-newsletter-col reveal-on-scroll fade-up stagger-3">
+          <h4 class="footer-title">Stay Updated</h4>
+          <p class="newsletter-desc">Subscribe to our newsletter for insights on high-paying tech and design niches.</p>
+          <form class="newsletter-form" id="newsletter-form">
+            <input type="email" placeholder="Enter your email" class="newsletter-input" required autocomplete="off">
+            <button type="submit" class="btn-primary newsletter-btn" aria-label="Subscribe">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Copyright Bar -->
+      <div class="footer-bottom">
+        <div class="container footer-bottom-container">
+          <p class="copyright-text">© 2026 ApexLance. Built for SoftGrid Solutions Task.</p>
+          <div class="footer-bottom-links">
+            <a href="#" class="footer-bottom-link">Privacy Policy</a>
+            <a href="#" class="footer-bottom-link">Terms of Service</a>
+            <a href="#" class="footer-bottom-link">Security Guidelines</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="../js/main.js"></script>
+  </body>
+</html>
