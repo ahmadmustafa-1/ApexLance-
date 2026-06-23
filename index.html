@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./src/assets/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ApexLance | Premium Freelance Marketplace</title>
+    <!-- Google Fonts: Plus Jakarta Sans (Headings) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <!-- Custom 3D Cursor -->
+    <div class="custom-cursor-dot" id="cursor-dot"></div>
+    <div class="custom-cursor-ring" id="cursor-ring"></div>
+
+    <!-- Background 3D Drifting Orbs -->
+    <div class="orb-backdrop">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="grid-overlay"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar" id="navbar">
+      <div class="container navbar-container">
+        <a href="#" class="logo-link">
+          <div class="logo">
+            <svg class="logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 4L4 26H28L16 4ZM16 12L8 26H24L16 12Z" fill="url(#logo-grad)" fill-rule="evenodd" />
+              <circle cx="16" cy="18.5" r="2.5" fill="url(#logo-grad)" />
+              <defs>
+                <linearGradient id="logo-grad" x1="4" y1="4" x2="28" y2="26" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#6366f1" />
+                  <stop offset="1" stop-color="#a855f7" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <span class="logo-text">Apex<span>Lance</span></span>
+          </div>
+        </a>
+
+        <nav class="nav-menu" id="nav-menu">
+          <a href="#services" class="nav-link">Explore Categories</a>
+          <a href="#" class="nav-link">Find Work</a>
+          <a href="#" class="nav-link">Post a Job</a>
+          <a href="#" class="nav-link">Enterprise</a>
+          <a href="#" class="nav-link">About</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Light/Dark Theme">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <a href="#" class="btn-ghost">Log In</a>
+          <a href="#" class="btn-primary">Join as Freelancer</a>
+          <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-drawer" id="mobile-drawer">
+      <nav class="drawer-menu">
+        <a href="#services" class="drawer-link">Explore Categories</a>
+        <a href="#" class="drawer-link">Find Work</a>
+        <a href="#" class="drawer-link">Post a Job</a>
+        <a href="#" class="drawer-link">Enterprise</a>
+        <a href="#" class="drawer-link">About</a>
+        <div class="drawer-theme-toggle-row">
+          <span>Soft Theme Adjust</span>
+          <button class="theme-toggle-btn" id="theme-toggle-mobile" aria-label="Toggle Light/Dark Theme">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="drawer-actions">
+          <a href="#" class="btn-ghost w-full text-center">Log In</a>
+          <a href="#" class="btn-primary w-full text-center">Join as Freelancer</a>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Hero Section -->
+      <section class="hero-section" id="hero">
+        <div class="container hero-container">
+          <div class="hero-content reveal-on-scroll fade-left">
+            <div class="badge-container">
+              <span class="hero-badge">✨ The Elite Network for Tech & Creative Talents</span>
+            </div>
+            <h1 class="hero-title">Hire the Absolute <span class="gradient-text">Top 1% Freelance</span> Talent</h1>
+            <p class="hero-desc">Connect with pre-vetted senior software developers, visionary UI/UX designers, marketing strategists, and AI system architects. Scale your team instantly.</p>
+            
+            <!-- Search Box -->
+            <form class="search-form" id="search-form" action="#" method="GET">
+              <div class="search-input-wrapper">
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" placeholder="What skill or expertise do you need?" class="search-input" id="search-input" required autocomplete="off">
+              </div>
+              <button type="submit" class="btn-primary search-btn">Search Talent</button>
+            </form>
+
+            <!-- Popular Searches -->
+            <div class="popular-tags">
+              <span class="tag-title">Popular:</span>
+              <a href="#" class="tag-link">AI Agents</a>
+              <a href="#" class="tag-link">React</a>
+              <a href="#" class="tag-link">Brand Design</a>
+              <a href="#" class="tag-link">Web3</a>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="hero-stats">
+              <div class="stat-item">
+                <h3 class="stat-number" data-target="15000">0</h3>
+                <p class="stat-label">Verified Experts</p>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-item">
+                <h3 class="stat-number" data-target="99">0</h3>
+                <p class="stat-label">Project Success %</p>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-item">
+                <h3 class="stat-number" data-target="24">0</h3>
+                <p class="stat-label">Earned by Talents ($M)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Graphic -->
+          <div class="hero-graphic-wrapper reveal-on-scroll fade-right">
+            <div class="glow-bg glow-primary"></div>
+            <div class="glow-bg glow-secondary"></div>
+            <div class="hero-graphic-card-3d" id="hero-tilt-card">
+              <div class="card-glow"></div>
+              <div class="card-border-light"></div>
+              <img src="./src/assets/hero_illustration.png" alt="ApexLance Platform Dashboard" class="hero-image">
+              
+              <!-- Floating Badges for micro-animation (with translateZ) -->
+              <div class="floating-badge fb-1 float-3d-layer" style="transform: translateZ(50px);">
+                <div class="badge-icon dev">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+                <div class="badge-info">
+                  <span class="badge-title">React Architect</span>
+                  <span class="badge-rate">$120/hr</span>
+                </div>
+              </div>
+              
+              <div class="floating-badge fb-2 float-3d-layer" style="transform: translateZ(60px);">
+                <div class="badge-icon design">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"></path><path d="M12 6V12L16 14"></path></svg>
+                </div>
+                <div class="badge-info">
+                  <span class="badge-title">UI/UX Designer</span>
+                  <span class="badge-status">● Available</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Services Section -->
+      <section class="services-section" id="services">
+        <div class="container">
+          <div class="section-header reveal-on-scroll fade-up">
+            <span class="section-subtitle">Core Disciplines</span>
+            <h2 class="section-title">Explore Popular Service Categories</h2>
+            <p class="section-desc">Hire specialized freelancers to solve complex technical challenges and elevate your brand aesthetic.</p>
+          </div>
+
+          <div class="services-grid">
+            <!-- Category 1: Development -->
+            <div class="service-card-3d reveal-on-scroll fade-up stagger-1">
+              <div class="card-glow"></div>
+              <div class="card-border-light"></div>
+              <div class="card-inner-3d">
+                <div class="service-icon-wrapper dev-gradient float-layer-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                  </svg>
+                </div>
+                <h3 class="service-card-title float-layer-title">Development & Architecture</h3>
+                <p class="service-card-desc float-layer-desc">Web apps, custom APIs, mobile apps, smart contract engineering, and cloud infrastructure.</p>
+                <a href="#" class="service-card-link float-layer-link">
+                  <span>Explore Experts</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Category 2: UI/UX Design -->
+            <div class="service-card-3d reveal-on-scroll fade-up stagger-2">
+              <div class="card-glow"></div>
+              <div class="card-border-light"></div>
+              <div class="card-inner-3d">
+                <div class="service-icon-wrapper design-gradient float-layer-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"></path>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    <path d="M2 12h20"></path>
+                  </svg>
+                </div>
+                <h3 class="service-card-title float-layer-title">UI/UX & Product Design</h3>
+                <p class="service-card-desc float-layer-desc">Interactive user experience maps, high-fidelity prototypes, logo & brand identity, design systems.</p>
+                <a href="#" class="service-card-link float-layer-link">
+                  <span>Explore Experts</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Category 3: AI & Data Science -->
+            <div class="service-card-3d reveal-on-scroll fade-up stagger-3">
+              <div class="card-glow"></div>
+              <div class="card-border-light"></div>
+              <div class="card-inner-3d">
+                <div class="service-icon-wrapper ai-gradient float-layer-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+                    <circle cx="12" cy="12" r="4"></circle>
+                  </svg>
+                </div>
+                <h3 class="service-card-title float-layer-title">AI & Data Engineering</h3>
+                <p class="service-card-desc float-layer-desc">LLM fine-tuning, retrieval-augmented generation (RAG) setup, model deployment, custom data models.</p>
+                <a href="#" class="service-card-link float-layer-link">
+                  <span>Explore Experts</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Category 4: Brand Marketing -->
+            <div class="service-card-3d reveal-on-scroll fade-up stagger-1">
+              <div class="card-glow"></div>
+              <div class="card-border-light"></div>
+              <div class="card-inner-3d">
+                <div class="service-icon-wrapper marketing-gradient float-layer-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                </div>
+                <h3 class="service-card-title float-layer-title">Growth & Marketing</h3>
+                <p class="service-card-desc float-layer-desc">Search engine optimization, programmatic advertising, customer acquisition loops, marketing analytics.</p>
+                <a href="#" class="service-card-link float-layer-link">
+                  <span>Explore Experts</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Category 5: Graphics & Video -->
+            <div class="service-card-3d reveal-on-scroll fade-up stagger-2">
+              <div class="card-glow"></div>
+              <div class="card-border-light"></div>
+              <div class="card-inner-3d">
+                <div class="service-icon-wrapper video-gradient float-layer-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                  </svg>
+                </div>
+                <h3 class="service-card-title float-layer-title">Video & 3D Animation</h3>
+                <p class="service-card-desc float-layer-desc">Product demo animations, explainer videos, VFX production, high-quality audio mastering.</p>
+                <a href="#" class="service-card-link float-layer-link">
+                  <span>Explore Experts</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Category 6: Content & Docs -->
+            <div class="service-card-3d reveal-on-scroll fade-up stagger-3">
+              <div class="card-glow"></div>
+              <div class="card-border-light"></div>
+              <div class="card-inner-3d">
+                <div class="service-icon-wrapper writing-gradient float-layer-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                </div>
+                <h3 class="service-card-title float-layer-title">Technical Writing & Copy</h3>
+                <p class="service-card-desc float-layer-desc">Whitepapers, developer guides, brand copywriting, technical documentation architecture.</p>
+                <a href="#" class="service-card-link float-layer-link">
+                  <span>Explore Experts</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+      <div class="container footer-container">
+        <!-- Brand Intro -->
+        <div class="footer-brand-col reveal-on-scroll fade-up">
+          <div class="logo">
+            <svg class="logo-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 4L4 26H28L16 4ZM16 12L8 26H24L16 12Z" fill="url(#footer-logo-grad)" fill-rule="evenodd" />
+              <circle cx="16" cy="18.5" r="2.5" fill="url(#footer-logo-grad)" />
+              <defs>
+                <linearGradient id="footer-logo-grad" x1="4" y1="4" x2="28" y2="26" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#6366f1" />
+                  <stop offset="1" stop-color="#a855f7" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <span class="logo-text">Apex<span>Lance</span></span>
+          </div>
+          <p class="footer-desc">Connecting forward-thinking companies with premium, pre-vetted independent freelance professionals worldwide.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="GitHub">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Discord">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Links Col 1 -->
+        <div class="footer-links-col reveal-on-scroll fade-up stagger-1">
+          <h4 class="footer-title">For Clients</h4>
+          <ul class="footer-list">
+            <li><a href="#" class="footer-link-item">How to Hire</a></li>
+            <li><a href="#" class="footer-link-item">Talent Quality</a></li>
+            <li><a href="#" class="footer-link-item">Pricing Plans</a></li>
+            <li><a href="#" class="footer-link-item">Project Insurance</a></li>
+          </ul>
+        </div>
+
+        <!-- Links Col 2 -->
+        <div class="footer-links-col reveal-on-scroll fade-up stagger-2">
+          <h4 class="footer-title">For Freelancers</h4>
+          <ul class="footer-list">
+            <li><a href="#" class="footer-link-item">Find Projects</a></li>
+            <li><a href="#" class="footer-link-item">Application Process</a></li>
+            <li><a href="#" class="footer-link-item">Freelancer Hub</a></li>
+            <li><a href="#" class="footer-link-item">Referral Program</a></li>
+          </ul>
+        </div>
+
+        <!-- Links Col 3 (Newsletter) -->
+        <div class="footer-newsletter-col reveal-on-scroll fade-up stagger-3">
+          <h4 class="footer-title">Stay Updated</h4>
+          <p class="newsletter-desc">Subscribe to our newsletter for insights on high-paying tech and design niches.</p>
+          <form class="newsletter-form" id="newsletter-form">
+            <input type="email" placeholder="Enter your email" class="newsletter-input" required autocomplete="off">
+            <button type="submit" class="btn-primary newsletter-btn" aria-label="Subscribe">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Copyright Bar -->
+      <div class="footer-bottom">
+        <div class="container footer-bottom-container">
+          <p class="copyright-text">© 2026 ApexLance. Built for SoftGrid Solutions Task.</p>
+          <div class="footer-bottom-links">
+            <a href="#" class="footer-bottom-link">Privacy Policy</a>
+            <a href="#" class="footer-bottom-link">Terms of Service</a>
+            <a href="#" class="footer-bottom-link">Security Guidelines</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
+
