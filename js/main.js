@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
   setupLoginFormValidation();
   setupLoginRegisterToggling();
   setupRegisterFormValidation();
+  setupJobBoardProposals();
+  setupEnterpriseForm();
 });
 
 /**
@@ -40,7 +42,7 @@ function setupStickyNavbar() {
 function setupMobileDrawer() {
   const menuToggle = document.getElementById('menu-toggle');
   const mobileDrawer = document.getElementById('mobile-drawer');
-  
+
   if (!menuToggle || !mobileDrawer) return;
 
   const toggleMenu = () => {
@@ -94,6 +96,9 @@ function setupInteractiveSearch() {
     if (!query) return;
 
     showNotification(`Searching ApexLance for: "${query}"...`, 'info');
+    setTimeout(() => {
+      window.location.href = `./pages/services.html?search=${encodeURIComponent(query)}`;
+    }, 800);
   });
 }
 
@@ -128,7 +133,7 @@ function setup3DTiltEngine() {
     '.intro-left-card, .intro-right-card, .mv-card, .team-card, ' +
     '.contact-info-panel, .details-sidebar-pricing'
   );
-  
+
   tiltCards.forEach(card => {
     // Dynamically match any child element containing "inner" (e.g. catalog-card-inner, mv-card-inner)
     const inner = card.querySelector('[class*="inner"]');
@@ -195,12 +200,12 @@ function setup3DTiltEngine() {
  */
 function setupScrollRevealAndCounters() {
   const revealElements = document.querySelectorAll('.reveal-on-scroll');
-  
+
   const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        
+
         // If this entry contains stat-numbers, trigger counter animation
         const counters = entry.target.querySelectorAll('.stat-number');
         if (counters.length > 0) {
@@ -210,7 +215,7 @@ function setupScrollRevealAndCounters() {
             }
           });
         }
-        
+
         observer.unobserve(entry.target);
       }
     });
@@ -237,7 +242,7 @@ function animateCounter(counterElement) {
   const update = (now) => {
     const elapsed = now - startTime;
     const progress = Math.min(elapsed / duration, 1);
-    
+
     // Ease-out cubic curve
     const easeProgress = 1 - Math.pow(1 - progress, 3);
     const currentValue = Math.floor(easeProgress * target);
@@ -374,7 +379,7 @@ function setupCustomCursor() {
   document.body.addEventListener('mouseover', (e) => {
     const target = e.target;
     if (!target) return;
-    
+
     // Check if element or its ancestor is interactive (including subpage interactive elements)
     const interactive = target.closest(
       'a, button, input, textarea, select, [role="button"], .service-card-3d, .hero-graphic-card-3d, ' +
@@ -390,7 +395,7 @@ function setupCustomCursor() {
   document.body.addEventListener('mouseout', (e) => {
     const target = e.target;
     if (!target) return;
-    
+
     const interactive = target.closest(
       'a, button, input, textarea, select, [role="button"], .service-card-3d, .hero-graphic-card-3d, ' +
       '.social-link, .tag-link, .catalog-card-item, .portfolio-item-card, .mv-card, .team-card, ' +
@@ -468,22 +473,39 @@ function setupCatalogSearchAndFilters() {
   let activeCategory = 'all';
   let searchQuery = '';
 
+  // Extract search parameter from URL if present
+  const urlParams = new URLSearchParams(window.location.search);
+  const queryParam = urlParams.get('search');
+  if (queryParam) {
+    searchQuery = queryParam.trim().toLowerCase();
+    if (searchInput) {
+      searchInput.value = queryParam;
+    }
+  }
+
   const filterCards = () => {
+    let visibleCount = 0;
     catalogCards.forEach(card => {
       const cardCategory = card.getAttribute('data-category');
       const cardTags = card.getAttribute('data-tags') || '';
       const cardTitle = card.querySelector('.card-service-title')?.textContent || '';
       const cardDesc = card.querySelector('.card-service-desc')?.textContent || '';
-      
+
       const searchContent = `${cardTags} ${cardTitle} ${cardDesc}`.toLowerCase();
-      
+
       const matchesCategory = activeCategory === 'all' || cardCategory === activeCategory;
-      const matchesSearch = searchQuery === '' || searchContent.includes(searchQuery);
+
+      // Splitting search query by spaces to match all words in any order, ignoring commas in content
+      const matchesSearch = searchQuery === '' || (() => {
+        const queryWords = searchQuery.split(/\s+/).filter(word => word.length > 0);
+        return queryWords.every(word => searchContent.includes(word));
+      })();
 
       if (matchesCategory && matchesSearch) {
         card.classList.remove('hidden');
         card.style.opacity = '0';
         card.style.transform = 'scale(0.95)';
+        visibleCount++;
         // Force reflow and scale up for a smooth transition
         setTimeout(() => {
           card.style.opacity = '1';
@@ -493,6 +515,16 @@ function setupCatalogSearchAndFilters() {
         card.classList.add('hidden');
       }
     });
+
+    // Toggle No Results Message element
+    const noResultsMsg = document.getElementById('no-results-message');
+    if (noResultsMsg) {
+      if (visibleCount === 0) {
+        noResultsMsg.classList.remove('hidden');
+      } else {
+        noResultsMsg.classList.add('hidden');
+      }
+    }
   };
 
   if (searchInput) {
@@ -510,6 +542,9 @@ function setupCatalogSearchAndFilters() {
       filterCards();
     });
   });
+
+  // Run initial filter
+  filterCards();
 }
 
 /**
@@ -691,7 +726,7 @@ function setupLoginRegisterToggling() {
     registerForm.style.display = 'block';
     if (loginFooterNav) loginFooterNav.style.display = 'none';
     if (registerFooterNav) registerFooterNav.style.display = 'block';
-    
+
     // Update headers
     if (cardTitle) cardTitle.innerHTML = 'Create <span class="gradient-text">Account</span>';
     if (cardSubtitle) cardSubtitle.textContent = 'Join the elite freelance marketplace today';
@@ -824,5 +859,88 @@ function setupRegisterFormValidation() {
         window.location.href = '../index.html';
       }, 2000);
     }
+  });
+}
+
+/**
+ * JOB BOARD: Submit Proposal Modal Interaction Logic
+ */
+function setupJobBoardProposals() {
+  const applyBtns = document.querySelectorAll('.btn-apply-job');
+  const modal = document.getElementById('proposal-modal');
+  const closeBtn = document.getElementById('close-proposal-modal');
+  const form = document.getElementById('proposal-form');
+  const jobTitleInput = document.getElementById('proposal-job-title');
+
+  if (!modal || !closeBtn || !form) return;
+
+  applyBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const jobName = btn.getAttribute('data-job') || '';
+      jobTitleInput.value = jobName;
+
+      const modalJobTitleSpan = modal.querySelector('.gradient-text');
+      if (modalJobTitleSpan) {
+        modalJobTitleSpan.textContent = 'Job Proposal';
+      }
+
+      modal.classList.add('active');
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden'; // Lock scrolling
+    });
+  });
+
+  const closeModal = () => {
+    modal.classList.remove('active');
+    setTimeout(() => {
+      modal.classList.add('hidden');
+    }, 300);
+    document.body.style.overflow = ''; // Unlock scrolling
+    form.reset();
+  };
+
+  closeBtn.addEventListener('click', closeModal);
+
+  // Close modal when clicking backdrop
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  // Handle Form Submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('proposal-name').value.trim();
+    const bid = document.getElementById('proposal-bid').value.trim();
+    const duration = document.getElementById('proposal-duration').value.trim();
+
+    showNotification(`✨ Proposal submitted successfully for "${jobTitleInput.value}"!`, 'success');
+    closeModal();
+  });
+}
+
+/**
+ * ENTERPRISE PAGE: Consultation Form Submission Handler
+ */
+function setupEnterpriseForm() {
+  const form = document.getElementById('enterprise-consult-form');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const company = document.getElementById('ent-company').value.trim();
+    const name = document.getElementById('ent-name').value.trim();
+    const email = document.getElementById('ent-email').value.trim();
+
+    showNotification(`✨ Thank you, ${name}! Our Enterprise Account Manager will contact you at ${email} within 2 hours.`, 'success');
+    form.reset();
   });
 }

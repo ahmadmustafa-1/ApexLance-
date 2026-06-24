@@ -7,6 +7,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         services: resolve(__dirname, 'pages/services.html'),
+        findWork: resolve(__dirname, 'pages/find-work.html'),
+        enterprise: resolve(__dirname, 'pages/enterprise.html'),
         profile: resolve(__dirname, 'pages/profile.html'),
         serviceDetails: resolve(__dirname, 'pages/service-details.html'),
         about: resolve(__dirname, 'pages/about.html'),
