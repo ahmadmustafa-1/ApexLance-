@@ -475,8 +475,21 @@ function setupCatalogSearchAndFilters() {
   let activeCategory = 'all';
   let searchQuery = '';
 
-  // Extract search parameter from URL if present
+  // Extract category and search parameters from URL if present
   const urlParams = new URLSearchParams(window.location.search);
+  
+  const categoryParam = urlParams.get('category');
+  if (categoryParam) {
+    activeCategory = categoryParam.trim().toLowerCase();
+    categoryTabs.forEach(tab => {
+      if (tab.getAttribute('data-category') === activeCategory) {
+        tab.classList.add('active');
+      } else {
+        tab.classList.remove('active');
+      }
+    });
+  }
+
   const queryParam = urlParams.get('search');
   if (queryParam) {
     searchQuery = queryParam.trim().toLowerCase();
@@ -488,12 +501,22 @@ function setupCatalogSearchAndFilters() {
   const filterCards = () => {
     let visibleCount = 0;
     catalogCards.forEach(card => {
-      const cardCategory = card.getAttribute('data-category');
+      const cardCategory = card.getAttribute('data-category') || '';
       const cardTags = card.getAttribute('data-tags') || '';
       const cardTitle = card.querySelector('.card-service-title')?.textContent || '';
       const cardDesc = card.querySelector('.card-service-desc')?.textContent || '';
 
-      const searchContent = `${cardTags} ${cardTitle} ${cardDesc}`.toLowerCase();
+      // Map category id to human-friendly synonyms for rich search compatibility
+      const categoryNames = {
+        'web-development': 'web development backend frontend fullstack app coding programmer developer',
+        'graphic-design': 'graphic design ui/ux ui ux logo brand illustrator designer figma product creative',
+        'writing': 'writing copywriter copyediting developer guide whitepaper content blog technical copy',
+        'marketing': 'marketing growth seo ads campaign digital search social email strategy brand',
+        'video-editing': 'video editing animation vfx audio sound explainer motion producer 3d graphics',
+        'programming': 'programming ai intelligence data software python solidity smart contracts web3 developer coding'
+      };
+      const categoryText = categoryNames[cardCategory] || cardCategory;
+      const searchContent = `${cardTags} ${cardTitle} ${cardDesc} ${cardCategory} ${categoryText}`.toLowerCase();
 
       const matchesCategory = activeCategory === 'all' || cardCategory === activeCategory;
 
@@ -869,6 +892,7 @@ function setupRegisterFormValidation() {
  */
 function setupJobBoardProposals() {
   const applyBtns = document.querySelectorAll('.btn-apply-job');
+  const cardTitleLinks = document.querySelectorAll('.catalog-card-item .card-service-title a');
   const modal = document.getElementById('proposal-modal');
   const closeBtn = document.getElementById('close-proposal-modal');
   const form = document.getElementById('proposal-form');
@@ -876,19 +900,33 @@ function setupJobBoardProposals() {
 
   if (!modal || !closeBtn || !form) return;
 
+  const openProposalModal = (jobName) => {
+    jobTitleInput.value = jobName;
+
+    const modalJobTitleSpan = modal.querySelector('.gradient-text');
+    if (modalJobTitleSpan) {
+      modalJobTitleSpan.textContent = 'Job Proposal';
+    }
+
+    modal.classList.add('active');
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // Lock scrolling
+  };
+
   applyBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const jobName = btn.getAttribute('data-job') || '';
-      jobTitleInput.value = jobName;
+      openProposalModal(jobName);
+    });
+  });
 
-      const modalJobTitleSpan = modal.querySelector('.gradient-text');
-      if (modalJobTitleSpan) {
-        modalJobTitleSpan.textContent = 'Job Proposal';
-      }
-
-      modal.classList.add('active');
-      modal.classList.remove('hidden');
-      document.body.style.overflow = 'hidden'; // Lock scrolling
+  cardTitleLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const jobCard = link.closest('.catalog-card-item');
+      const applyBtn = jobCard ? jobCard.querySelector('.btn-apply-job') : null;
+      const jobName = applyBtn ? applyBtn.getAttribute('data-job') : link.textContent.trim();
+      openProposalModal(jobName);
     });
   });
 

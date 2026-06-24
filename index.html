@@ -136,14 +136,14 @@
             strategists, and AI system architects. Scale your team instantly.</p>
 
           <!-- Search Box -->
-          <form class="search-form" id="search-form" action="#" method="GET">
+          <form class="search-form" id="search-form" action="./pages/services.html" method="GET">
             <div class="search-input-wrapper">
               <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>
-              <input type="text" placeholder="What skill or expertise do you need?" class="search-input"
+              <input type="text" name="search" placeholder="What skill or expertise do you need?" class="search-input"
                 id="search-input" required autocomplete="off">
             </div>
             <button type="submit" class="btn-primary search-btn">Search Talent</button>
@@ -245,7 +245,7 @@
               <h3 class="service-card-title float-layer-title">Development & Architecture</h3>
               <p class="service-card-desc float-layer-desc">Web apps, custom APIs, mobile apps, smart contract
                 engineering, and cloud infrastructure.</p>
-              <a href="./pages/services.html" class="service-card-link float-layer-link">
+              <a href="./pages/services.html?category=web-development" class="service-card-link float-layer-link">
                 <span>Explore Experts</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -274,7 +274,7 @@
               <h3 class="service-card-title float-layer-title">UI/UX & Product Design</h3>
               <p class="service-card-desc float-layer-desc">Interactive user experience maps, high-fidelity prototypes,
                 logo & brand identity, design systems.</p>
-              <a href="./pages/services.html" class="service-card-link float-layer-link">
+              <a href="./pages/services.html?category=graphic-design" class="service-card-link float-layer-link">
                 <span>Explore Experts</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -301,7 +301,7 @@
               <h3 class="service-card-title float-layer-title">AI & Data Engineering</h3>
               <p class="service-card-desc float-layer-desc">LLM fine-tuning, retrieval-augmented generation (RAG) setup,
                 model deployment, custom data models.</p>
-              <a href="./pages/services.html" class="service-card-link float-layer-link">
+              <a href="./pages/services.html?category=programming" class="service-card-link float-layer-link">
                 <span>Explore Experts</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -326,7 +326,7 @@
               <h3 class="service-card-title float-layer-title">Growth & Marketing</h3>
               <p class="service-card-desc float-layer-desc">Search engine optimization, programmatic advertising,
                 customer acquisition loops, marketing analytics.</p>
-              <a href="./pages/services.html" class="service-card-link float-layer-link">
+              <a href="./pages/services.html?category=marketing" class="service-card-link float-layer-link">
                 <span>Explore Experts</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -351,7 +351,7 @@
               <h3 class="service-card-title float-layer-title">Video & 3D Animation</h3>
               <p class="service-card-desc float-layer-desc">Product demo animations, explainer videos, VFX production,
                 high-quality audio mastering.</p>
-              <a href="./pages/services.html" class="service-card-link float-layer-link">
+              <a href="./pages/services.html?category=video-editing" class="service-card-link float-layer-link">
                 <span>Explore Experts</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -379,7 +379,7 @@
               <h3 class="service-card-title float-layer-title">Technical Writing & Copy</h3>
               <p class="service-card-desc float-layer-desc">Whitepapers, developer guides, brand copywriting, technical
                 documentation architecture.</p>
-              <a href="./pages/services.html" class="service-card-link float-layer-link">
+              <a href="./pages/services.html?category=writing" class="service-card-link float-layer-link">
                 <span>Explore Experts</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -452,10 +452,10 @@
       <div class="footer-links-col reveal-on-scroll fade-up stagger-1">
         <h4 class="footer-title">For Clients</h4>
         <ul class="footer-list">
-          <li><a href="#" class="footer-link-item">How to Hire</a></li>
-          <li><a href="#" class="footer-link-item">Talent Quality</a></li>
-          <li><a href="#" class="footer-link-item">Pricing Plans</a></li>
-          <li><a href="#" class="footer-link-item">Project Insurance</a></li>
+          <li><a href="./pages/services.html" class="footer-link-item">How to Hire</a></li>
+          <li><a href="./pages/about.html" class="footer-link-item">Talent Quality</a></li>
+          <li><a href="./pages/services.html" class="footer-link-item">Pricing Plans</a></li>
+          <li><a href="./pages/enterprise.html" class="footer-link-item">Project Insurance</a></li>
         </ul>
       </div>
 
@@ -463,10 +463,10 @@
       <div class="footer-links-col reveal-on-scroll fade-up stagger-2">
         <h4 class="footer-title">For Freelancers</h4>
         <ul class="footer-list">
-          <li><a href="#" class="footer-link-item">Find Projects</a></li>
-          <li><a href="#" class="footer-link-item">Application Process</a></li>
-          <li><a href="#" class="footer-link-item">Freelancer Hub</a></li>
-          <li><a href="#" class="footer-link-item">Referral Program</a></li>
+          <li><a href="./pages/find-work.html" class="footer-link-item">Find Projects</a></li>
+          <li><a href="./pages/contact.html" class="footer-link-item">Application Process</a></li>
+          <li><a href="./pages/about.html" class="footer-link-item">Freelancer Hub</a></li>
+          <li><a href="./pages/about.html" class="footer-link-item">Referral Program</a></li>
         </ul>
       </div>
 
